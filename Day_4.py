@@ -7,7 +7,7 @@ for i in range(N):
     var = input("Enter the elements: ")
     if var == "":
         continue
-    if var[0] >= '0' and var[0] <= '9':
+    if var[0] >= '0' and var[0] <='9':
         number_list = number_list + [int(var)]
         count_num = count_num + 1
     else:
