@@ -1,0 +1,39 @@
+playlist = []
+n = int(input("Enter number of songs: "))
+for i in range(n):
+    duration = int(input("Enter duration: "))
+    playlist.append(duration)
+
+invalid = False
+for duration in playlist:
+    if duration <= 0:
+        invalid = True
+        break
+
+if invalid:
+    print("Invalid Playlist: Durations must be greater than 0")
+else:
+    total_duration = sum(playlist)
+    songs = len(playlist)
+    repetitive = False
+    for duration in playlist:
+        if playlist.count(duration) > 1:
+            repetitive = True
+            break
+    if total_duration < 300:
+        category = "Too Short Playlist"
+        recommendation = "Add more songs"
+    elif total_duration > 3600:
+        category = "Too Long Playlist"
+        recommendation = "Consider trimming playlist"
+    elif repetitive:
+        category = "Repetitive Playlist"
+        recommendation = "Add variety"
+    else:
+        category = "Balanced Playlist"
+        recommendation = "Good listening session"
+
+    print("Total Duration:", total_duration, "seconds")
+    print("Songs:", songs)
+    print("Category:", category)
+    print("Recommendation:", recommendation)
