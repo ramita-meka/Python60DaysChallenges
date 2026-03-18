@@ -1,0 +1,39 @@
+n = int(input("Enter number of buildings: "))
+energy = []
+for i in range(n):
+    val = int(input("Enter energy reading: "))
+    energy.append(val)
+data = {
+    "efficient": [],
+    "moderate": [],
+    "high": [],
+    "invalid": []
+}
+for e in energy:
+    if e < 0:
+        data["invalid"].append(e)
+    elif e <= 50:
+        data["efficient"].append(e)
+    elif e <= 150:
+        data["moderate"].append(e)
+    else:
+        data["high"].append(e)
+
+total = sum([e for e in energy if e >= 0])
+count = len(energy)
+
+summary = (total, count)
+result = ""
+if len(data["high"]) > 3:
+    result = "Energy Waste Detected"
+elif abs(len(data["efficient"]) - len(data["moderate"])) <= 1:
+    result = "Efficient Campus"
+elif total > 600:
+    result = "Energy Waste Detected"
+else:
+    result = "Moderate Usage"
+print("\n--- Energy Report ---")
+print("Categorized Data:", data)
+print("Total Consumption:", summary[0])
+print("Number of Buildings:", summary[1])
+print("Result:", result)
